@@ -99,7 +99,7 @@ class MessengerScreen extends StatelessWidget
                   separatorBuilder: (context, index) => SizedBox(
                     width: 20.0,
                   ),
-                  itemCount: 5,
+                  itemCount: 8,
                 ),
               ),
               SizedBox(
