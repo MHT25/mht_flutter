@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-class UserModel
-{
+class UserModel {
   final int id;
   final String name;
   final String phone;
@@ -11,6 +10,7 @@ class UserModel
 });
 
 }
+
 class UsersScreen extends StatelessWidget {
   List<UserModel>users=
   [
