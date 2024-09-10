@@ -82,10 +82,53 @@ class _BmiScreenState extends State<BmiScreen> {
             ),
           ),
           Expanded(
-            child: Container(
-              color:Colors.green,
-              width: double.infinity,
-            ),
+            child:Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey[400],
+              ),
+                child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                  children:
+                  [
+                    Text('HEIGHT',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),),
+                    Row(crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children:
+                      [
+                        Text('180',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 40,
+                        ),),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text('CM',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),),
+
+                      ],
+                    ),
+                    Slider(
+                        value:120 ,
+                        max: 220,
+                        min: 80,
+                        onChanged:(value)
+                        {
+                          print(value.round());
+                        } )
+                  ],
+                ),
+              ),
+            )
           ),
           Expanded(
             child: Container(
