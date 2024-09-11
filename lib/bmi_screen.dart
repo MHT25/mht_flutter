@@ -156,6 +156,7 @@ class _BmiScreenState extends State<BmiScreen> {
                               fontSize: 40,
                             ),),
                           Row(mainAxisAlignment: MainAxisAlignment.center,
+
                             children:
                             [
                               FloatingActionButton(
@@ -225,7 +226,7 @@ class _BmiScreenState extends State<BmiScreen> {
                 color: Colors.white,
               ),
             ),),
-          )
+          ),
         ],
       ),
     );
