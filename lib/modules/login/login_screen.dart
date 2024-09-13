@@ -69,11 +69,15 @@ class LoginScreen extends StatelessWidget
                   height: 20,),
                 defaultButton(
                     text:'login',
+                  radius: 15,
                   function:()
                   {
                     print(emailController.text);
                     print(passwordController.text);
                   },
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 defaultButton(
                   text:'login',

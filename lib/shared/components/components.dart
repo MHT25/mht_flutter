@@ -4,18 +4,26 @@ import 'package:flutter/material.dart';
 Widget defaultButton({
   double width = double.infinity,
   Color background = Colors.blue,
+  bool isUperCase= true,
+  double radius=10,
+
   required Function function,
   required String text,
 })=>
     Container(
       width: width,
-      color: background,
+      height: 40,
       child: MaterialButton(
         onPressed:(){},
         child: Text(
-        text.toUpperCase(),
+        isUperCase ? text.toUpperCase():text,
           style: TextStyle(
             color: Colors.white,
     ),),
     ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+            radius),
+        color: background,
+      ),
   );
