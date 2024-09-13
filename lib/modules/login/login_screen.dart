@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mht_flutter/shared/components/components.dart';
+
+//reusable components:
+
+// 1.timing
+// 2.refactor
+// 3.quality
+
 
 class LoginScreen extends StatelessWidget
 {
@@ -59,18 +67,23 @@ class LoginScreen extends StatelessWidget
                 ),
                 SizedBox(
                   height: 20,),
-                Container(width: double.infinity,
-                  color: Colors.blue,
-                  child: MaterialButton(onPressed: ()
+                defaultButton(
+                    text:'login',
+                  function:()
                   {
                     print(emailController.text);
                     print(passwordController.text);
                   },
-                  child: Text('LOGIN',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),),
-                  ),
+                ),
+                defaultButton(
+                  text:'login',
+                  background: Colors.red,
+                  width: 200,
+                  function:()
+                  {
+                    print(emailController.text);
+                    print(passwordController.text);
+                  },
                 ),
                 SizedBox(
                   height:10 ,),
