@@ -12,6 +12,7 @@ class LoginScreen extends StatelessWidget
 {
   var emailController=TextEditingController();
   var passwordController=TextEditingController();
+  var formKey = GlobalKey<FormState>();
 
     LoginScreen({super.key});
 
@@ -25,82 +26,114 @@ class LoginScreen extends StatelessWidget
         padding: const EdgeInsets.all(20),
         child: Center(
           child: SingleChildScrollView(
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-              children:
-              [
-                Text('Login',
-                style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold
-                  ,
-
-
-                ),),
-                SizedBox(
-                  height: 40,
-                ),
-                TextFormField(
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  onFieldSubmitted:(Value){print(Value);} ,
-                  onChanged:(Value){print(Value);},
-                  decoration: InputDecoration(
-                    labelText: 'Email Address',
-                    prefixIcon:Icon(Icons.email),
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(
-                    height:15),
-                TextFormField(
-                  controller: passwordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                  onFieldSubmitted:(Value){print(Value);} ,
-                  onChanged:(Value){print(Value);},
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    prefixIcon:Icon(Icons.lock),
-                    suffix:Icon(Icons.remove_red_eye),
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,),
-                defaultButton(
-                    text:'login',
-                  radius: 15,
-                  function:()
-                  {
-                    print(emailController.text);
-                    print(passwordController.text);
-                  },
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                defaultButton(
-                  text:'login',
-                  background: Colors.red,
-                  width: 200,
-                  function:()
-                  {
-                    print(emailController.text);
-                    print(passwordController.text);
-                  },
-                ),
-                SizedBox(
-                  height:10 ,),
-                Row(mainAxisAlignment: MainAxisAlignment.center,
-                  children:
+            child: Form(
+              key:formKey ,
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children:
                 [
-                  Text('Don\'t have an account?',
+                  Text('Login',
                   style: TextStyle(
-
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold
+                    ,
+              
+              
                   ),),
-                  TextButton(onPressed: (){}, child: Text('Register Now'))
-                ],)
-              ],),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    onFieldSubmitted:(Value){print(Value);} ,
+                    onChanged:(Value)
+                    {
+                      print(Value);
+                    },
+                    validator: (value)
+                    {
+                      if(value!.isEmpty)
+                      {
+                        return 'email address must not be empty';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Email Address',
+                      prefixIcon:Icon(Icons.email),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(
+                      height:15),
+                  TextFormField(
+                    controller: passwordController,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: true,
+                    onFieldSubmitted:(String Value)
+                    {
+                      print(Value);
+                    } ,
+                    onChanged:(String Value)
+                    {
+                      print(Value);
+                    },
+                    validator: (value)
+                    {
+                      if(value!.isEmpty)
+                      {
+                        return 'password must not be empty';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      prefixIcon:Icon(Icons.lock),
+                      suffix:Icon(Icons.remove_red_eye),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,),
+                  defaultButton(
+                      text:'login',
+                    radius: 15,
+                    function:()
+                    {
+                      if(formKey.currentState!.validate())
+                      {
+                        print(emailController.text);
+                        print(passwordController.text);
+
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  defaultButton(
+                    text:'Register',
+                    background: Colors.blue,
+                    width:double.infinity,
+                    function:()
+                    {
+                      print(emailController.text);
+                      print(passwordController.text);
+                    },
+                  ),
+                  SizedBox(
+                    height:10 ,),
+                  Row(mainAxisAlignment: MainAxisAlignment.center,
+                    children:
+                  [
+                    Text('Don\'t have an account?',
+                    style: TextStyle(
+              
+                    ),),
+                    TextButton(onPressed: (){}, child: Text('Register Now'))
+                  ],)
+                ],),
+            ),
           ),
         ),
       ),
