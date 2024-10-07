@@ -34,21 +34,22 @@ Widget defaultFormField({
   required TextInputType type,
   void Function(String)? onSubmit,
   void Function(String)? onChange,
+  bool isPassword =false,
+  required String? Function(String?)? validate,
+  required String lable,
+  required IconData prefix,
+  IconData? suffix,
 }) => TextFormField(
   controller: controller,
   keyboardType: type,
   obscureText: true,
   onFieldSubmitted: onSubmit,
   onChanged: onChange,
-  validator: (value) {
-    if (value!.isEmpty) {
-      return 'email must not be empty';
-    }
-    return null;
-  },
+  validator: validate,
   decoration: InputDecoration(
-    labelText: 'Email Address',
-    prefixIcon: Icon(Icons.email),
+    labelText: lable,
+    prefixIcon:Icon(prefix),
+    suffixIcon: suffix !=null ?Icon(suffix):null,
     border: OutlineInputBorder(),
   ),
 );

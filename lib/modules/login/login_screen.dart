@@ -42,61 +42,37 @@ class LoginScreen extends StatelessWidget
                   SizedBox(
                     height: 40,
                   ),
-                  TextFormField(
+                  defaultFormField(
                     controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    obscureText: true,
-                    onFieldSubmitted:(String Value)
-                    {
-                      print(Value);
-                    } ,
-                    onChanged:(String Value)
-                    {
-                      print(Value);
-                    },
-                    validator: (value)
-                    {
-                      if(value!.isEmpty)
+                    lable: 'Email',
+                    prefix: Icons.email,
+                    type: TextInputType.emailAddress,
+                      validate: (String? value)
                       {
-                        return 'email must not be empty';
+                        if (value == null || value.isEmpty) {
+                          return 'Email must not be empty';
+                        }
+                        return null;
                       }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Email Address',
-                      prefixIcon:Icon(Icons.email),
-                      border: OutlineInputBorder(),
-                    ),
+
+
                   ),
                   SizedBox(
                       height:15),
-                  TextFormField(
+                  defaultFormField(
                     controller: passwordController,
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
-                    onFieldSubmitted:(String Value)
+                    lable: 'Password',
+                    prefix: Icons.lock,
+                    suffix:Icons.remove_red_eye ,
+                    type: TextInputType.visiblePassword,
+                    validate: (String? value)
                     {
-                      print(Value);
-                    } ,
-                    onChanged:(String Value)
-                    {
-                      print(Value);
-                    },
-                    validator: (value)
-                    {
-                      if(value!.isEmpty)
-                      {
-                        return 'password must not be empty';
+                    if (value == null || value.isEmpty) {
+                      return 'password is too short';
+                    }
+                    return null;
                       }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon:Icon(Icons.lock),
-                      suffix:Icon(Icons.remove_red_eye),
-                      border: OutlineInputBorder(),
                     ),
-                  ),
                   SizedBox(
                     height: 20,),
                   defaultButton(
