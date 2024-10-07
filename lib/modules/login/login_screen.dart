@@ -45,8 +45,12 @@ class LoginScreen extends StatelessWidget
                   TextFormField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                    onFieldSubmitted:(Value){print(Value);} ,
-                    onChanged:(Value)
+                    obscureText: true,
+                    onFieldSubmitted:(String Value)
+                    {
+                      print(Value);
+                    } ,
+                    onChanged:(String Value)
                     {
                       print(Value);
                     },
@@ -54,7 +58,7 @@ class LoginScreen extends StatelessWidget
                     {
                       if(value!.isEmpty)
                       {
-                        return 'email address must not be empty';
+                        return 'email must not be empty';
                       }
                       return null;
                     },
@@ -117,8 +121,11 @@ class LoginScreen extends StatelessWidget
                     width:double.infinity,
                     function:()
                     {
-                      print(emailController.text);
-                      print(passwordController.text);
+                      if(formKey.currentState!.validate())
+                      {
+                        print(emailController.text);
+                        print(passwordController.text);
+                      }
                     },
                   ),
                   SizedBox(
